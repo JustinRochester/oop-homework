@@ -206,9 +206,9 @@ class World{
                 else Unknown();
             }
         }
-}w;
+}world;
 
 int main(){
-    w.Run();
+    world.Run();
     return 0;
 }
