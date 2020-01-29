@@ -176,7 +176,7 @@ class World{
         void Unknown(){
             cout<<"Î´Öª´íÎó"<<endl;
         }
-        int Carry(string sentence){
+        int Understand(string sentence){
             if(sentence.find(" ")==string::npos) return 9;
             string head=sentence.substr(0, sentence.find(" ") );
             sentence=sentence.substr( sentence.find(" ")+1 );
@@ -194,7 +194,7 @@ class World{
             int ans;
             while( Input(order) ){
                 if(order=="ÍË³ö") break;
-                ans=Carry(order);
+                ans=Understand(order);
                 if(ans==0) continue;
                 else if(ans==6) NotExist();
                 else if(ans==7) Applied();
