@@ -177,14 +177,14 @@ class World{
             cout<<"未知错误"<<endl;
         }
         int Understand(string sentence){
-            if(sentence.find(" ")==string::npos) return 9;//不含空格，指令非法
+            if(sentence.find(" ")==string::npos) return 9;
             string head=sentence.substr(0, sentence.find(" ") );
             sentence=sentence.substr( sentence.find(" ")+1 );
             if(head=="看看")
                 return Print_string(sentence);
             else if(head=="整数")
                 return Apply_string(sentence);
-            else//其它类型的指令都有可能为变量开头
+            else
                 return Update_string(head,sentence);
         }
     
