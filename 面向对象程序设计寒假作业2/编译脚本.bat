@@ -1,5 +1,39 @@
 @echo off
-g++ baihua-lang.cpp
-ren a.exe baihua-lang.exe
-echo Finished compiling.
+title 编译脚本
+
+if exist main.exe (
+	echo 程序 main.exe 已存在
+	pause>nul
+	exit
+)
+if not exist main.cpp (
+	echo 源代码 main.cpp 丢失
+	pause>nul
+	exit
+)
+if not exist World.h.gch (
+	if not exist World.h (
+		echo 源代码 World.h 丢失
+		pause>nul
+		exit
+		)
+	if not exist VariableRepository.h.gch (
+		if exist VariableRepository.h (g++ VariableRepository.h) else (
+			echo 源代码 VariableRepository.h 丢失
+			pause>nul
+			exit
+		)
+	)
+	if not exist NumberRepository.h.gch (
+		if exist NumberRepository.h (g++ NumberRepository.h) else (
+			echo 源代码 NumberRepository.h 丢失
+			pause>nul
+			exit
+		)
+	)
+	g++ World.h
+)
+g++ main.cpp
+ren a.exe main.exe
+echo 编译完成
 pause>nul
