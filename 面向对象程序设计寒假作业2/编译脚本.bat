@@ -33,7 +33,6 @@ if not exist World.h.gch (
 	)
 	g++ World.h
 )
-g++ main.cpp
-ren a.exe main.exe
+g++ -o main.exe main.cpp
 echo ±àÒëÍê³É
 pause>nul
