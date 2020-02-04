@@ -1,5 +1,7 @@
 {
+    "C_Cpp.dimInactiveRegions": false,
+    "C_Cpp.errorSquiggles": "Disabled",
     "files.associations": {
-        "vector": "cpp"
+        "*.tcc": "cpp"
     }
 }
