@@ -27,7 +27,7 @@ class World{
             return getline(cin,sentence);
         }
         void OrderBreakDown(string order){//将指令按空格分解
-            orderRegister.clear();
+            orderRegister.clear();//先清空暂存器 
             while(order.find(" ")!=string::npos){
                 orderRegister.push_back( order.substr(0,order.find(" ")) );
                 order=order.substr( order.find(" ")+1 );
@@ -61,16 +61,17 @@ class World{
             if( !valueRepository.VariableDelete(name) ) errorType=1;
         }
         void Understand(int &errorType,string &answer,string sentence){
-            errorType=0;
-            answer="";
-            OrderBreakDown(sentence);
+            errorType=0;//初始化无错误 
+            answer="";//初始化输出为空 
+            OrderBreakDown(sentence);//分解指令 
             
-            if(orderRegister.size()<=1){//除空格外，只含一个内容，指令非法
+            if(orderRegister.size()<=1){//除空格外，只含不超过一个内容，指令非法
                 errorType=4;
                 return ;
             }
             if(orderRegister.size()==4&&orderRegister[0]=="整数"){
                 if(orderRegister[2]!="等于") errorType=4;
+				//分解为四节的，一定需为“整数 <变量> 等于 <值>”的形式
                 int value;
                 if( !valueRepository.ValueFind(value,orderRegister[3]) ) errorType=3;
                 else ApplyAssign(errorType,orderRegister[1],value);

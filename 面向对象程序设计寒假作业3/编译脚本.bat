@@ -1,13 +1,13 @@
 @echo off
 title 编译脚本
 
-if exist main.exe (
-	echo 程序 main.exe 已存在
+if exist baihua-lang.exe (
+	echo 程序 baihua-lang.exe 已存在
 	pause>nul
 	exit
 )
-if not exist main.cpp (
-	echo 源代码 main.cpp 丢失
+if not exist baihua-lang.cpp (
+	echo 源代码 baihua-lang.cpp 丢失
 	pause>nul
 	exit
 )
@@ -48,6 +48,6 @@ if not exist World.h.gch (
 	)
 	g++ World.h
 )
-g++ -o main.exe main.cpp
+g++ -o baihua-lang.exe baihua-lang.cpp
 echo 编译完成
 pause>nul

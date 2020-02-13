@@ -1,9 +1,9 @@
 #include "World.h"
 
-World w;
+World world;
 int main(int argc,char *argv[]){
 	if(argc!=1)
 		freopen(argv[1],"r",stdin);
-	w.Run();
+	world.Run();
 	return 0;
 }

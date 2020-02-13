@@ -9,10 +9,10 @@ class VariableRepository{
     private:
         vector<int> variableValue;
         map<string,int> variableMap;
-        bool VariableFind(vector<int>::iterator &v,string name){
-            if(variableMap.find(name)==variableMap.end()) return 0;//找不到
+        bool VariableFind(vector<int>::iterator &v,string name){//v 为 vector<int> 型的迭代器的一个引用 
+            if(variableMap.find(name)==variableMap.end()) return false;//找不到
             v=variableValue.begin()+variableMap[name];
-            return 1;
+            return true;
         }
 
     public:

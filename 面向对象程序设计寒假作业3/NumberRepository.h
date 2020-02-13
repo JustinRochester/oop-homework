@@ -10,9 +10,9 @@ class NumberRepository{
         bool FindChar(int &number,string num){
             for(int i=0;i<=10;i++) if( numberChar[i]==num ){
                 number=i;
-                return 1;
+                return true;
             }//遍历寻找
-            return 0;//找不到
+            return false;//找不到
         }
         bool FormatChar(string &num){
             int temporary[3];
@@ -50,7 +50,7 @@ class NumberRepository{
         bool ToChar(string &cn,int value){
             if(value<-99||value>99) return false;
             cn="";
-            if(value<0) cn="负",value=-value;
+            if(value<0) cn="负",value=-value;//先判定是否是负数 
             if(value<=10) cn+=numberChar[value];
             else if(value<20) cn+=numberChar[10]+numberChar[value-10];//十几的形式
             else if(value%10==0) cn+=numberChar[value/10]+numberChar[10];//几十的形式
@@ -60,7 +60,7 @@ class NumberRepository{
 
         bool ToNumber(int &value,string name){
             bool negative=0;
-            if(name.substr(0,2)=="负") negative=1,name=name.substr(2);
+            if(name.substr(0,2)=="负") negative=1,name=name.substr(2);//先判定是否是负数 
             if( !FormatChar(name) ) return false;//失败
             int ten,base;
             FindChar( ten,name.substr(0,2) );
