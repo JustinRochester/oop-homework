@@ -25,6 +25,9 @@ class ErrorRepository{
         void NumberLimitError(string &output){
             output="数字超限";
         }
+        void DevidedError(string &output){
+        	output="零不得为除数";
+		}
         void Unknown(string &output){
             output="未知错误";
         }
@@ -36,6 +39,7 @@ class ErrorRepository{
         	Keyword.push_back("乘以");
         	Keyword.push_back("除以");
         	Keyword.push_back("取模");
+        	Keyword.push_back("取余");
         	Keyword.push_back("看看");
         	Keyword.push_back("等于");
         	Keyword.push_back("整数");
@@ -50,6 +54,7 @@ class ErrorRepository{
                 case 4:DontKnow(output); break;
                 case 5:ConflictError(output); break;
                 case 6:NumberLimitError(output); break;
+                case 7:DevidedError(output); break;
                 default:Unknown(output);
             }
         }

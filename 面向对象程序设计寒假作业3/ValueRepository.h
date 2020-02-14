@@ -44,6 +44,9 @@ class ValueRepository{
 		bool VariableModule(string name,int value){
 			return variableRepository.VariableModule(name,value);
 		}
+		bool VariableRemainder(string name,int value){
+			return variableRepository.VariableRemainder(name,value);
+		}
         bool VariableShow(int &value,string name){
 			return variableRepository.VariableShow(value,name);
 		}

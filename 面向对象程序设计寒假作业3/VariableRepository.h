@@ -73,6 +73,12 @@ class VariableRepository{
             *v%=value;
             return true;
         }
+        bool VariableRemainder(string name,int value){
+        	vector<int>::iterator v;
+            if( !VariableFind(v,name) ) return false;
+            *v=(*v%value+value)%value;
+            return true;
+		}
         bool VariableShow(int &value,string name){
         	vector<int>::iterator v;
             if( !VariableFind(v,name) ) return false;

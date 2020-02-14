@@ -38,10 +38,16 @@ class World{
             if( !valueRepository.VariableMultiply(name,value) ) errorType=1;
         }
         void Devide(int &errorType,string name,int value){
-            if( !valueRepository.VariableDevide(name,value) ) errorType=1;
+        	if(value==0) errorType=7;//0 不能作为除数，下同 
+            else if( !valueRepository.VariableDevide(name,value) ) errorType=1;
         }
         void Module(int &errorType,string name,int value){
-            if( !valueRepository.VariableModule(name,value) ) errorType=1;
+        	if(value==0) errorType=7;
+            else if( !valueRepository.VariableModule(name,value) ) errorType=1;
+        }
+        void Remainder(int &errorType,string name,int value){
+        	if(value==0) errorType=7;
+            else if( !valueRepository.VariableRemainder(name,value) ) errorType=1;
         }
         void Assign(int &errorType,string name,int value){
             if( !valueRepository.VariableAssign(name,value) ) errorType=1;
@@ -69,6 +75,7 @@ class World{
         	if(orderRegister[1]=="乘以") Multiply(errorType,name,value);
         	if(orderRegister[1]=="除以") Devide(errorType,name,value);
         	if(orderRegister[1]=="取模") Module(errorType,name,value);
+        	if(orderRegister[1]=="取余") Remainder(errorType,name,value);
 		}
         void Understand(int &errorType,string &answer,string sentence){
             errorType=0;//初始化无错误 
