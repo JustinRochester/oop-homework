@@ -15,13 +15,7 @@ class World{
         bool IsConflict(string name){
             int value;
             if( valueRepository.ToNumber(value,name) ) return 1;
-            if( name=="增加" ) return 1;
-            if( name=="减少" ) return 1;
-            if( name=="看看" ) return 1;
-            if( name=="等于" ) return 1;
-            if( name=="整数" ) return 1;
-            if( name=="删除" ) return 1;
-            return 0;
+            return errorRepository.IsKeyword(name);
         }
         bool Input(string &sentence){
             return getline(cin,sentence);
@@ -37,8 +31,17 @@ class World{
         void Add(int &errorType,string name,int value){
             if( !valueRepository.VariableAdd(name,value) ) errorType=1;
         }
-        void Reduce(int &errorType,string name,int value){
-            if( !valueRepository.VariableReduce(name,value) ) errorType=1;
+        void Subtract(int &errorType,string name,int value){
+            if( !valueRepository.VariableSubtract(name,value) ) errorType=1;
+        }
+        void Multiply(int &errorType,string name,int value){
+            if( !valueRepository.VariableMultiply(name,value) ) errorType=1;
+        }
+        void Devide(int &errorType,string name,int value){
+            if( !valueRepository.VariableDevide(name,value) ) errorType=1;
+        }
+        void Module(int &errorType,string name,int value){
+            if( !valueRepository.VariableModule(name,value) ) errorType=1;
         }
         void Assign(int &errorType,string name,int value){
             if( !valueRepository.VariableAssign(name,value) ) errorType=1;
@@ -60,6 +63,13 @@ class World{
         void Delete(int &errorType,string name){
             if( !valueRepository.VariableDelete(name) ) errorType=1;
         }
+        void Update(int &errorType,string name,int value){//变量值发生变化的操作 
+        	if(orderRegister[1]=="增加") Add(errorType,name,value);
+        	if(orderRegister[1]=="减少") Subtract(errorType,name,value);
+        	if(orderRegister[1]=="乘以") Multiply(errorType,name,value);
+        	if(orderRegister[1]=="除以") Devide(errorType,name,value);
+        	if(orderRegister[1]=="取模") Module(errorType,name,value);
+		}
         void Understand(int &errorType,string &answer,string sentence){
             errorType=0;//初始化无错误 
             answer="";//初始化输出为空 
@@ -78,17 +88,13 @@ class World{
             }
             else if(orderRegister.size()==2){
                 if(orderRegister[0]=="看看") Print(errorType,answer,orderRegister[1]);
-                else if(orderRegister[0]=="整数") Apply(errorType,orderRegister[1]);
-                else if(orderRegister[0]=="删除") Delete(errorType,orderRegister[1]);
+                if(orderRegister[0]=="整数") Apply(errorType,orderRegister[1]);
+                if(orderRegister[0]=="删除") Delete(errorType,orderRegister[1]);
             }
             else if(orderRegister.size()==3){
                 int value;
                 if( !valueRepository.ValueFind(value,orderRegister[2]) ) errorType=3;
-                else{
-                    if(orderRegister[1]=="增加") Add(errorType,orderRegister[0],value);
-                    else if(orderRegister[1]=="减少") Reduce(errorType,orderRegister[0],value);
-                    else if(orderRegister[1]=="等于") Assign(errorType,orderRegister[0],value);
-                }
+                else Update(errorType,orderRegister[0],value);
             }
             else errorType=4;
         }

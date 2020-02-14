@@ -49,10 +49,28 @@ class VariableRepository{
             *v+=value;
             return true;
         }
-        bool VariableReduce(string name,int value){
+        bool VariableSubtract(string name,int value){
         	vector<int>::iterator v;
             if( !VariableFind(v,name) ) return false;
             *v-=value;
+            return true;
+        }
+        bool VariableMultiply(string name,int value){
+        	vector<int>::iterator v;
+            if( !VariableFind(v,name) ) return false;
+            *v*=value;
+            return true;
+        }
+        bool VariableDivide(string name,int value){
+        	vector<int>::iterator v;
+            if( !VariableFind(v,name) ) return false;
+            *v/=value;
+            return true;
+        }
+        bool VariableModule(string name,int value){
+        	vector<int>::iterator v;
+            if( !VariableFind(v,name) ) return false;
+            *v%=value;
             return true;
         }
         bool VariableShow(int &value,string name){

@@ -1,3 +1,4 @@
+#include<vector>
 #include<string>
 using namespace std;
 
@@ -5,6 +6,7 @@ using namespace std;
 #define ERRORREPOSITORY
 class ErrorRepository{
     private:
+    	vector<string> Keyword;
         void NotExist(string &output){
             output="变量不存在";
         }
@@ -28,7 +30,17 @@ class ErrorRepository{
         }
     
     public:
-        ErrorRepository() {}
+        ErrorRepository(){
+        	Keyword.push_back("增加");
+        	Keyword.push_back("减少");
+        	Keyword.push_back("乘以");
+        	Keyword.push_back("除以");
+        	Keyword.push_back("取模");
+        	Keyword.push_back("看看");
+        	Keyword.push_back("等于");
+        	Keyword.push_back("整数");
+        	Keyword.push_back("删除");
+		}
         ~ErrorRepository() {}
         void ErrorOutput(string &output,int errorType){
             switch(errorType){
@@ -41,5 +53,10 @@ class ErrorRepository{
                 default:Unknown(output);
             }
         }
+        bool IsKeyword(string name){
+        	for(int i=0;i<Keyword.size();i++)
+        		if(Keyword[i]==name) return 1;
+        	return 0;
+		}
 };
 #endif

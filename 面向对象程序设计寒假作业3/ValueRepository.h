@@ -32,8 +32,17 @@ class ValueRepository{
         bool VariableAdd(string name,int value){
 			return variableRepository.VariableAdd(name,value);
 		}
-        bool VariableReduce(string name,int value){
-			return variableRepository.VariableReduce(name,value);
+        bool VariableSubtract(string name,int value){
+			return variableRepository.VariableSubtract(name,value);
+		}
+		bool VariableMultiply(string name,int value){
+			return variableRepository.VariableMultiply(name,value);
+		}
+		bool VariableDevide(string name,int value){
+			return variableRepository.VariableDivide(name,value);
+		}
+		bool VariableModule(string name,int value){
+			return variableRepository.VariableModule(name,value);
 		}
         bool VariableShow(int &value,string name){
 			return variableRepository.VariableShow(value,name);
